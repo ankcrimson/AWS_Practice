@@ -16,5 +16,6 @@ yum install -y apache-maven
 
 ```bash
 git clone https://github.com/ankcrimson/AWS_Practice.git
+cd MyFirstBasicFromSample
 mvn exec:java -Dexec.mainClass="com.amazonaws.samples.S3Sample"
 ```
