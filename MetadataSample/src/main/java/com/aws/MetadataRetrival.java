@@ -32,29 +32,27 @@ public class MetadataRetrival {
 		}
 		
 		String currentTopic="public-ipv4";
-		
+		try(
+				InputStreamReader consoleInputStream = new InputStreamReader(System.in);
+				BufferedReader nextCommandReader = new BufferedReader(consoleInputStream);
+				) {
 		do {
 			URL valueUrl=new URL(metadataURLString+currentTopic);
 			URLConnection valueConnection=valueUrl.openConnection();
-			try (
-					InputStreamReader metadataInputStream = new InputStreamReader(valueConnection.getInputStream());
-					BufferedReader metadataListReader = new BufferedReader(metadataInputStream);
-					InputStreamReader consoleInputStream = new InputStreamReader(System.in);
-					BufferedReader nextCommandReader = new BufferedReader(consoleInputStream);
-					) {
-				String line="";
-				while((line=metadataListReader.readLine())!=null) {
-					line=line.trim();
-					System.out.println(line);
-				}
-				System.out.println("Enter next value to be printed or exit for exiting:");
-				currentTopic = nextCommandReader.readLine();
-			}catch( IOException ex ) {
-				System.out.println("Error reading contents");
-				currentTopic="exit";
-				ex.printStackTrace();
+			InputStreamReader metadataInputStream = new InputStreamReader(valueConnection.getInputStream());
+			BufferedReader metadataListReader = new BufferedReader(metadataInputStream);
+			String line="";
+			while((line=metadataListReader.readLine())!=null) {
+				line=line.trim();
+				System.out.println(currentTopic+" # "+line);
 			}
+			System.out.println("Enter next value to be printed or exit for exiting:");
+			currentTopic = nextCommandReader.readLine();
 		} while (currentTopic.length()>0&&!currentTopic.equals("exit"));
+		}catch( IOException ex ) {
+			System.out.println("Error reading contents");
+			ex.printStackTrace();
+		}
 		System.out.println("Exiting... Bye");
 	}
 
