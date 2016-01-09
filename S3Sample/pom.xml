@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.amazonaws.pratices</groupId>
-    <artifactId>MyFirstBasicFromSample</artifactId>
+    <artifactId>S3Sample</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>MyFirstBasicFromSample</name>
+    <name>S3Sample</name>
     <url>http://aws.amazon.com/sdkforjava</url>
 
     <properties>
