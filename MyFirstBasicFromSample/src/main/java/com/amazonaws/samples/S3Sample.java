@@ -66,7 +66,7 @@ public class S3Sample {
         s3.setRegion(usWest2);
 
         String bucketName = "ankur-s3-bucket-1";
-        String key = "MyObjectKey";
+        String key = "ankur_file1";
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
