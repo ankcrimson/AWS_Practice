@@ -28,6 +28,7 @@ public class MetadataRetrival {
 			}
 		}catch( IOException ex ) {
 			System.out.println("Error reading contents");
+			ex.printStackTrace();
 		}
 		
 		String currentTopic="public-ipv4";
@@ -50,6 +51,8 @@ public class MetadataRetrival {
 				currentTopic = nextCommandReader.readLine();
 			}catch( IOException ex ) {
 				System.out.println("Error reading contents");
+				currentTopic="exit";
+				ex.printStackTrace();
 			}
 		} while (currentTopic.length()>0&&!currentTopic.equals("exit"));
 		System.out.println("Exiting... Bye");
