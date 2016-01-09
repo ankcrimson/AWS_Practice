@@ -17,6 +17,7 @@ yum install -y apache-maven
 ## Run:
 
 ```bash
+sudo su
 git clone https://github.com/ankcrimson/AWS_Practice.git
 cd MetadataRetrival
 mvn clean install
