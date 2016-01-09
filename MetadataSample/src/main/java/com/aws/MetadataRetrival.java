@@ -11,7 +11,7 @@ import java.util.List;
 public class MetadataRetrival {
 
 	public static void main(String[] args) throws Exception {
-		String metadataURLString="http://169.254.169.254/latest/metadata";
+		String metadataURLString="http://169.254.169.254/latest/meta-data/";
 		URL metadataURL=new URL(metadataURLString);
 		URLConnection metadataConnection=metadataURL.openConnection();
 		List<String> values=new ArrayList<String>();
@@ -34,7 +34,7 @@ public class MetadataRetrival {
 		String currentTopic="public-ipv4";
 		
 		do {
-			URL valueUrl=new URL(metadataURLString+"/"+currentTopic);
+			URL valueUrl=new URL(metadataURLString+currentTopic);
 			URLConnection valueConnection=valueUrl.openConnection();
 			try (
 					InputStreamReader metadataInputStream = new InputStreamReader(valueConnection.getInputStream());
