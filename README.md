@@ -1,6 +1,8 @@
 # AWS_Practice
 AWS Practice Repo
 
+### Runs only from an ec2 server, so ssh into it for running it from commandline
+
 ## Commands (to be added in bootstrap)
 
 ```bash
@@ -17,5 +19,6 @@ yum install -y apache-maven
 ```bash
 git clone https://github.com/ankcrimson/AWS_Practice.git
 cd S3Sample
+mvn clean install
 mvn exec:java -Dexec.mainClass="com.amazonaws.samples.S3Sample"
 ```
