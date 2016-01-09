@@ -43,7 +43,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.amazonaws.samples.S3Sample</mainClass>
+                    <mainClass>com.aws.MetadataRetrival</mainClass>
                 </configuration>
             </plugin>
         </plugins>
