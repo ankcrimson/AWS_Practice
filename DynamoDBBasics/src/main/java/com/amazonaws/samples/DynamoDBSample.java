@@ -26,7 +26,7 @@ public class DynamoDBSample {
 		
 		ArrayList<AttributeDefinition> attributes=new ArrayList<AttributeDefinition>();
 		attributes.add(new AttributeDefinition().withAttributeName("id").withAttributeType(ScalarAttributeType.N));//numeric id field
-		attributes.add(new AttributeDefinition().withAttributeName("name").withAttributeType(ScalarAttributeType.S));//string name field
+		//attributes.add(new AttributeDefinition().withAttributeName("name").withAttributeType(ScalarAttributeType.S));//string name field
 		
 		ArrayList<KeySchemaElement> keys=new ArrayList<KeySchemaElement>();
 		keys.add(new KeySchemaElement().withAttributeName("id").withKeyType(KeyType.HASH));
