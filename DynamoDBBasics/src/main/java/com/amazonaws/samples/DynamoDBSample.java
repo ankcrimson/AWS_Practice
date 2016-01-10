@@ -2,6 +2,8 @@ package com.amazonaws.samples;
 
 import java.util.ArrayList;
 
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
@@ -17,6 +19,9 @@ public class DynamoDBSample {
 
 	public static void main(String[] args) throws Exception {
 		AmazonDynamoDBClient amazonDynamoDBClient=new AmazonDynamoDBClient();
+		Region region=Region.getRegion(Regions.US_WEST_2);
+		amazonDynamoDBClient.setRegion(region);
+		
 		DynamoDB dynamoDB=new DynamoDB(amazonDynamoDBClient); //create a dynamodb instance
 		
 		ArrayList<AttributeDefinition> attributes=new ArrayList<AttributeDefinition>();
