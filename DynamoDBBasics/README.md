@@ -19,7 +19,7 @@ yum install -y apache-maven
 ```bash
 sudo su
 git clone https://github.com/ankcrimson/AWS_Practice.git
-cd MetadataRetrival
+cd DynamoDBBasics
 mvn clean install
 mvn exec:java -Dexec.mainClass="com.amazonaws.samples.DynamoDBSample"
 mvn exec:java -Dexec.mainClass="com.amazonaws.samples.DynamoDBSampleDelete"
