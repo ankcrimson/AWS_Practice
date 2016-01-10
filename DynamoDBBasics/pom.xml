@@ -42,9 +42,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>com.amazonaws.samples.DynamoDBSample</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
