@@ -30,7 +30,7 @@ public class DynamoDBSample {
 		
 		ArrayList<KeySchemaElement> keys=new ArrayList<KeySchemaElement>();
 		keys.add(new KeySchemaElement().withAttributeName("id").withKeyType(KeyType.HASH));
-		keys.add(new KeySchemaElement().withAttributeName("name").withKeyType(KeyType.HASH));
+		keys.add(new KeySchemaElement().withAttributeName("name").withKeyType(KeyType.RANGE));
 		
 		CreateTableRequest createTableRequest =new CreateTableRequest()
 				.withTableName("MyFirstTable")
