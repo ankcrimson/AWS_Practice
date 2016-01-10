@@ -26,16 +26,17 @@ public class DynamoDBSample {
 		
 		ArrayList<AttributeDefinition> attributes=new ArrayList<AttributeDefinition>();
 		attributes.add(new AttributeDefinition().withAttributeName("id").withAttributeType(ScalarAttributeType.N));//numeric id field
-		//attributes.add(new AttributeDefinition().withAttributeName("name").withAttributeType(ScalarAttributeType.S));//string name field
+		attributes.add(new AttributeDefinition().withAttributeName("name").withAttributeType(ScalarAttributeType.S));//string name field
 		
 		ArrayList<KeySchemaElement> keys=new ArrayList<KeySchemaElement>();
 		keys.add(new KeySchemaElement().withAttributeName("id").withKeyType(KeyType.HASH));
+		keys.add(new KeySchemaElement().withAttributeName("name").withKeyType(KeyType.HASH));
 		
 		CreateTableRequest createTableRequest =new CreateTableRequest()
 				.withTableName("MyFirstTable")
 				.withAttributeDefinitions(attributes)
 				.withKeySchema(keys)
-				.withProvisionedThroughput(new ProvisionedThroughput().withReadCapacityUnits(5L).withWriteCapacityUnits(6L));
+				.withProvisionedThroughput(new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
 		
 		Table table=dynamoDB.createTable(createTableRequest);
 		
