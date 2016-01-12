@@ -30,8 +30,7 @@ public class DeleteAllS3 {
 		List<Bucket> buckets = client.listBuckets();
 		for(Bucket bucket:buckets) {
 			
-			ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(bucket.getName());
-			ObjectListing objectListing=client.listObjects(listObjectsRequest);
+			ObjectListing objectListing=client.listObjects(bucket.getName());
 			
 			
 			for(S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
