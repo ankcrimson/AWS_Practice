@@ -42,9 +42,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>com.amazonaws.samples.S3Sample</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
