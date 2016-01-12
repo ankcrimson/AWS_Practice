@@ -21,5 +21,20 @@ sudo su
 git clone https://github.com/ankcrimson/AWS_Practice.git
 cd S3Sample
 mvn clean install
+```
+## Execute:
+
+Sample S3 Code:
+```bash
 mvn exec:java -Dexec.mainClass="com.amazonaws.samples.S3Sample"
+```
+
+Sample Upload an html and make it public
+```bash
+mvn exec:java -Dexec.mainClass="com.amazonaws.samples.UploadHTML"
+```
+
+Sample delete all buckets after emptying them
+```bash
+mvn exec:java -Dexec.mainClass="com.amazonaws.samples.DeleteAllS3"
 ```
