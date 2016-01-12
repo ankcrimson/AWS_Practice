@@ -1,6 +1,8 @@
 package com.amazonaws.samples;
 
 import java.io.File;
+import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import com.amazonaws.regions.Region;
@@ -34,6 +36,11 @@ public class UploadHTML {
 	
 	public static void makePublic(AmazonS3 client, String bucketName, String key) {
 		client.setObjectAcl(bucketName, key, CannedAccessControlList.PublicRead);
+		Date expirationDate=new Date();
+		expirationDate.setTime(expirationDate.getTime()+360000000l);
+		URL resourceUrl = client.generatePresignedUrl(bucketName, key, expirationDate);
+		System.out.println(resourceUrl.toString());
+		System.out.println(resourceUrl.getProtocol()+"://"+resourceUrl.getHost()+"/"+resourceUrl.getPath());
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -51,6 +58,7 @@ public class UploadHTML {
 		createBucketIfNotExists(client, bucketName);
 		uploadFile(client,bucketName,filePath,key);
 		makePublic(client, bucketName, key);
+		
 		
 	}
 
