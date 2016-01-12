@@ -14,7 +14,7 @@ sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
 yum install -y apache-maven
 ```
 
-## Run:
+## Installation/Setup:
 
 ```bash
 sudo su
