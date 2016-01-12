@@ -40,7 +40,7 @@ public class UploadHTML {
 		expirationDate.setTime(expirationDate.getTime()+360000000l);
 		URL resourceUrl = client.generatePresignedUrl(bucketName, key, expirationDate);
 		System.out.println(resourceUrl.toString());
-		System.out.println(resourceUrl.getProtocol()+"://"+resourceUrl.getHost()+"/"+resourceUrl.getPath());
+		System.out.println(resourceUrl.getProtocol()+"://"+resourceUrl.getHost()+resourceUrl.getPath());
 	}
 	
 	public static void main(String[] args) throws Exception {
