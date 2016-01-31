@@ -19,12 +19,11 @@ public class SQSExample {
 
 	public static final String queueName = "sampleQueueFromJava";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		try( InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-				BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-				) {
-		
+	 InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+	 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+	
 		AmazonSQSClient sqsClient =new AmazonSQSClient();
 		CreateQueueRequest createQueueRequest = new CreateQueueRequest(queueName);
 		CreateQueueResult createQueueResult = sqsClient.createQueue(createQueueRequest);
@@ -70,8 +69,7 @@ public class SQSExample {
 		System.out.println("Queue Deleted, PRESS ENTER TO EXIT");
 		bufferedReader.readLine();
 		
-	}catch(Exception ex) {
-		ex.printStackTrace();
-	}
+	bufferedReader.close();
+	inputStreamReader.close();
 	}
 }
