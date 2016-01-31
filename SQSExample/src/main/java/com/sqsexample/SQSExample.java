@@ -39,6 +39,7 @@ public class SQSExample {
 		
 		//sending another message
 		sqsClient.sendMessage(queueUrl, "Test Message 2");
+		sqsClient.sendMessage(queueUrl, "Test Message 3");
 		
 		System.out.println("Messages Sent, PRESS ENTER TO CONTINUE");
 		bufferedReader.readLine();
