@@ -48,6 +48,7 @@ public class SQSExample {
 		
 		//recieveing messages
 		ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(queueUrl);
+		receiveMessageRequest.setMaxNumberOfMessages(10);
 		ReceiveMessageResult receiveMessageResult = sqsClient.receiveMessage(receiveMessageRequest);
 		List<Message> messages = receiveMessageResult.getMessages();
 		
