@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
 
-
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
 import com.amazonaws.services.sqs.model.CreateQueueResult;
@@ -25,6 +26,7 @@ public class SQSExample {
 	 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 	
 		AmazonSQSClient sqsClient =new AmazonSQSClient();
+		sqsClient.setRegion(Region.getRegion(Regions.US_WEST_2));
 		CreateQueueRequest createQueueRequest = new CreateQueueRequest(queueName);
 		CreateQueueResult createQueueResult = sqsClient.createQueue(createQueueRequest);
 		String queueUrl = createQueueResult.getQueueUrl();
