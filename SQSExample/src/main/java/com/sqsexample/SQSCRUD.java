@@ -26,11 +26,13 @@ public class SQSCRUD {
 		try{
 			CreateQueueResult createQueueResult = sqsClient.createQueue(queueName);
 			queueUrl = createQueueResult.getQueueUrl();
+			System.out.printf("Queue %s created",queueUrl);
 		}catch(Exception ex){ex.printStackTrace();}
 	}
 	public static void deleteQueue(AmazonSQSClient sqsClient) {
 		try{
 			sqsClient.deleteQueue(queueUrl);
+			System.out.printf("Queue %s deleted",queueUrl);
 		}catch(Exception ex){ex.printStackTrace();}
 	}
 	
@@ -39,6 +41,7 @@ public class SQSCRUD {
 		try{
 			SendMessageResult sendMessageResult = sqsClient.sendMessage(queueUrl, message);
 			messageDetails=sendMessageResult.getMessageId();
+			System.out.printf("Message with messageid=%s  created",messageDetails);
 		}catch(Exception ex){ex.printStackTrace();}
 		return messageDetails;
 	}
@@ -46,6 +49,7 @@ public class SQSCRUD {
 	public static void printMessages(AmazonSQSClient sqsClient) {
 		try{
 			List<Message> messages = sqsClient.receiveMessage(queueUrl).getMessages();
+			System.out.println("Printing Messages:");
 			for(Message message:messages) {
 				System.out.println(message.getMessageId()+" - "+message.getBody());
 			}
