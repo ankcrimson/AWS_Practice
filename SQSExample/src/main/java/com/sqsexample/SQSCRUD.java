@@ -32,7 +32,7 @@ public class SQSCRUD {
 	public static void deleteQueue(AmazonSQSClient sqsClient) {
 		try{
 			sqsClient.deleteQueue(queueUrl);
-			System.out.printf("Queue %s deleted",queueUrl);
+			System.out.printf("Queue %s deleted\n",queueUrl);
 		}catch(Exception ex){ex.printStackTrace();}
 	}
 	
@@ -41,7 +41,7 @@ public class SQSCRUD {
 		try{
 			SendMessageResult sendMessageResult = sqsClient.sendMessage(queueUrl, message);
 			messageDetails=sendMessageResult.getMessageId();
-			System.out.printf("Message with messageid=%s  created",messageDetails);
+			System.out.printf("Message with messageid=%s  created\n",messageDetails);
 		}catch(Exception ex){ex.printStackTrace();}
 		return messageDetails;
 	}
@@ -73,6 +73,7 @@ public class SQSCRUD {
 	public static void main(String[] args) throws Exception {
 
 	AmazonSQSClient sqsClient = new AmazonSQSClient();
+	sqsClient.setRegion(Region.getRegion(Regions.US_WEST_2));
 	 InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 	 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 	
