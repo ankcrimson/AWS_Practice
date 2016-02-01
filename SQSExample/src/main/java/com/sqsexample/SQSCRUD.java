@@ -21,7 +21,7 @@ public class SQSCRUD {
 
 	public static final String queueName = "sampleQueueFromJava";
 	static String queueUrl = "";
-
+	static Message message;
 	public static void createQueue(AmazonSQSClient sqsClient) {
 		try{
 			CreateQueueResult createQueueResult = sqsClient.createQueue(queueName);
@@ -50,8 +50,9 @@ public class SQSCRUD {
 		try{
 			List<Message> messages = sqsClient.receiveMessage(queueUrl).getMessages();
 			System.out.println("Printing Messages:");
-			for(Message message:messages) {
-				System.out.println(message.getMessageId()+" - "+message.getBody());
+			for(Message msg:messages) {
+				message = msg;
+				System.out.println(msg.getMessageId()+" - "+msg.getBody());
 			}
 		}catch(Exception ex){ex.printStackTrace();}
 	}
@@ -86,12 +87,10 @@ public class SQSCRUD {
 		case 0: createQueue(sqsClient); break;
 		case 1: 
 				System.out.println("Enter Message < 256kb");
-				String message = bufferedReader.readLine();
-				sendMessage(sqsClient, message); break;
+				String msg = bufferedReader.readLine();
+				sendMessage(sqsClient, msg); break;
 		case 2: printMessages(sqsClient); break;
-		case 3:
-			//delete message logic
-			break;
+		case 3: deleteMessage(sqsClient, message); break;
 		case 4: deleteQueue(sqsClient);
 		}
 		
