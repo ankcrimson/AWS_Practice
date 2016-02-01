@@ -47,10 +47,13 @@ public class SQSExample {
 		bufferedReader.readLine();
 		
 		//recieveing messages
+		
 		ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(queueUrl);
 		receiveMessageRequest.setMaxNumberOfMessages(10);
 		ReceiveMessageResult receiveMessageResult = sqsClient.receiveMessage(receiveMessageRequest);
 		List<Message> messages = receiveMessageResult.getMessages();
+		
+		
 		
 		//listing messages:
 		System.out.printf("Found a total of %d messages\n",messages.size());
